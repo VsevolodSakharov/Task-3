@@ -1,0 +1,14 @@
+{
+  "name": "task3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile":"sass --watch --no-source-map ./styles/main.scss ./styles/main.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.62.1"
+  }
+}

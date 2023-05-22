@@ -1,0 +1,140 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 18px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.main {
+  padding: 40px 30px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10vh;
+  min-height: 100vh;
+  height: 100%;
+  background-color: cornsilk;
+}
+.main__header {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 8vw;
+  color: rgb(82, 65, 44);
+}
+.main__search {
+  min-width: 45vw;
+  width: auto;
+  height: 3.5vh;
+  display: flex;
+  flex-flow: row nowrap;
+}
+.main__search-select {
+  width: 23%;
+}
+.main__search-input {
+  width: 62%;
+  font-size: 1vw;
+}
+.main__search-button {
+  width: 15%;
+}
+.main__article {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(100px, auto);
+  row-gap: 5rem;
+  column-gap: 5rem;
+}
+
+.card {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 18rem;
+  width: 13rem;
+  -moz-perspective: 200rem;
+  perspective: 200rem;
+}
+.card__side {
+  height: 100%;
+  width: 100%;
+  transition: all 0.8s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-backface-visibility: hidden; /* We don't want to see the back part of the element. */
+  backface-visibility: hidden; /* We don't want to see the back part of the element. */
+  border-radius: 3px;
+  overflow: hidden; /* The image is overflowing the parent. */
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
+}
+.card__side.--front {
+  object-fit: cover;
+}
+.card__side.--back {
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: rgba(0, 0, 0, 0.7);
+  transform: rotateY(180deg);
+  color: white;
+  padding: 20px;
+  overflow-y: auto;
+}
+.card__side.--back ul {
+  height: auto;
+  list-style: none;
+  text-align: center;
+  font-size: 16px;
+}
+.card__side.--back ul .title {
+  font-size: 18px;
+  font-weight: bold;
+}
+.card__side.--back ul li {
+  padding: 10px 0;
+}
+.card__side.--back ul li:not(:last-child) {
+  border-bottom: 1px solid white;
+}
+.card__side.--back .form {
+  position: sticky;
+  bottom: 0;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+.card__side.--back .form__button {
+  width: 180px;
+  height: 50px;
+  color: white;
+  font-weight: bold;
+  background-color: red;
+  border: 3px solid rgb(99, 10, 10);
+  box-shadow: 0 0.4rem rgba(0, 0, 0, 0.5);
+  border-radius: 25px;
+}
+.card__side.--back .form__button:active {
+  color: red;
+  background-color: pink;
+  border: 3px solid red;
+  box-shadow: 0 0.3rem rgba(0, 0, 0, 0.5);
+}
+.card__side.--back .form__button.--disabled {
+  background-color: gray;
+  border: 3px solid rgb(99, 99, 99);
+  pointer-events: none;
+}
+.card:hover .card__side.--back {
+  transform: rotateY(0);
+}
+.card:hover .card__side.--front {
+  transform: rotateY(-180deg);
+}
