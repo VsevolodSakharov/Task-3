@@ -1,0 +1,126 @@
+@mixin respond($breakpoint) {
+    @if $breakpoint == big-desktop {
+        @media (min-width: 1800px) {
+            @content;
+        } 
+    }
+}
+
+*,
+*::before,
+*::after{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: gray;
+
+}
+
+.main{
+    min-height: 60vh;
+    box-sizing: content-box;
+    width: 350px;
+    height: auto;
+    background-color: cornsilk;
+    border: 5px solid rgb(155, 148, 120);
+    padding: 30px 40px;
+    margin: auto;
+    display: flex;
+    flex-flow: column nowrap;
+    overflow: hidden;
+    justify-content: space-evenly;
+    text-align: center;
+    @include respond(big-desktop){
+        width: 25vw;
+        font-size: 1vw;
+        padding: 2vw;
+    }
+    &>*{
+        margin: 10px 0;
+        @include respond(big-desktop){
+            margin: 0.2vw 0;
+        }
+    }
+    &__title{
+        font-family: 'Times New Roman', Times, serif;
+        color: rgb(82, 65, 44);
+    }
+
+    &__form{
+        display: flex;
+        text-align: left;
+        flex-flow: column nowrap;
+        gap: 15px;
+        &-input{
+            height: 30px;
+            font-size: inherit;
+            padding: 0 10px;
+            @include respond(big-desktop){
+                height: 1.7vw;
+                padding: 0 0.5vw;
+            }
+            &::placeholder{
+                color: red;
+            }
+        }
+        &-warning{
+            visibility: hidden;
+            color: red;
+            font-size: 16px;
+            @include respond(big-desktop){
+                font-size: 0.9vw;
+            }
+            &.--main-error{
+                align-self: center;
+                text-align: center;
+            }
+        }
+        &-button{
+            align-self: center;
+            text-align: center;
+            height: 40px;
+            width: 100%;
+            font-size: 16px;
+            color: white;
+            font-weight: bold;
+            background-color: red;
+            border: 3px solid rgb(99, 10, 10);
+            &:active{
+                color: red;
+                background-color: pink;
+                border: 3px solid red;
+            }
+            @include respond(big-desktop){
+                font-size: 0.9vw;
+                height: 1.7vw;
+                margin: 1vw 0;
+            }
+
+        }
+    }
+    &__hint{
+        font-size: 16px;
+        @include respond(big-desktop){
+            font-size: 0.9vw;
+        }
+    }
+    & a{
+        color: goldenrod;
+        &:active{
+            color: black;
+        }
+    }
+
+}

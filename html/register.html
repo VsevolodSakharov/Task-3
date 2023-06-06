@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registration - My Bookshelf</title>
+        <link href="../styles/logreg.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <main class="main">
+            <h1 class="main__title">Registration</h1>
+            <form class="main__form">
+                <p class="main__form-warning --main-error">&nbsp</p>
+                <label for="log">Email:</label>
+                <input type="email" name="log" class="main__form-input --login" pattern=".+@globex\.com" autofocus autocomplete="off"/>
+                <p class="main__form-warning --log-error">&nbsp</p>
+                <label for="pass">Password:</label>
+                <input type="password" name="pass" class="main__form-input --password"/>
+                <p class="main__form-warning --pass-error">&nbsp</p>
+                <label for="confirm">Confirm password:</label>
+                <input type="password" name="confirm" class="main__form-input --confirm"/>
+                <p class="main__form-warning --confirm-error">&nbsp</p>
+                <button class="main__form-button --reg-button" type="submit">Submit</button>
+            </form>
+            <p class="main__hint">Already have an account? <a href="./login.html">Log in here!</a></p>
+            <a class="main__hint" href="./index.html">Return to main page</a>
+            <script src="../js/validation.js"></script>
+        </main>
+    </body>
+</html>

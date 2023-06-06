@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Main - My Bookshelf</title>
+        <link href="../styles/main.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <header class="edge --header">
+            <nav class="nav">
+                <p class="nav__username --loged-in"></p>
+                <div class="nav__wide">
+                    <a class="nav__wide-link" href="./about.html">About</a>
+                    <b>|</b>
+                    <a class="nav__wide-link --current" href="">Main</a>
+                    <b>|</b>
+                    <a class="nav__wide-link --loged-out" href="./login.html">Log in</a>
+                    <b class="--loged-out">|</b>
+                    <a class="nav__wide-link --loged-out" href="./register.html">Register</a>
+                    <a class="nav__wide-link --loged-in" href="./books.html">My Books</a>
+                    <b class="--loged-in">|</b>
+                    <a class="nav__wide-link --loged-in --exit" href="">Log out</a>
+                </div>
+                <div class="nav__small">
+                    <select class="nav__small-select">
+                        <option selected disabled class="nav__small-link" value="">Main</option>
+                        <option class="nav__small-link" value="about.html">About</option>
+                        <option class="nav__small-link --loged-out" value="login.html">Log in</option>
+                        <option class="nav__small-link --loged-out" value="register.html">Register</option>
+                        <option class="nav__small-link --loged-in" value="books.html">My Books</option>
+                        <option class="nav__small-link --loged-in" value="exit">Log out</option>
+                    </select>
+                </div> 
+                <script src="../js/nav.js" type = "module"></script>
+                <script src="../js/logcheck.js" type = "module"></script>
+            </nav>
+        </header>
+        <main class="main">
+            <h1 class="main__title">My Bookshelf</h1>
+            <form class="main__search">
+                <select class="main__search-select" name="search" id="search-select">
+                  <option selected disabled value="">--Please choose an option--</option>
+                  <option  value="intitle">Title</option>
+                  <option value="inauthor">Author</option>
+                  <option value="inpublisher">Publisher</option>
+                  <option value="subject">Subject</option>
+                  <option value="isbn">ISBN number</option>
+                </select>
+                <input class="main__search-input" placeholder="Enter your prompt..."/>
+                <button class="main__search-button" type="submit"><p class="text">Search</p><p class="text --small">>></p></button>
+            </form>
+            <article class="main__article">
+                <p class="no-results">No search results.</p>
+            </article>
+            <script src="../js/search.js" type="module"></script>
+        </main>
+        <footer class="edge --footer">
+            <p>MyBookshelf© 2023</p>
+        </footer>
+    </body>
+</html>

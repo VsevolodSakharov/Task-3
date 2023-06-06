@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile":"sass --watch --no-source-map ./styles/main.scss ./styles/main.css"
+    "compile":"sass --watch --no-source-map ./styles/main.scss ./styles/main.css",
+    "regcompile":"sass --watch --no-source-map ./styles/logreg.scss ./styles/logreg.css"
   },
   "author": "",
   "license": "ISC",

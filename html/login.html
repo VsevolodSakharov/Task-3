@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Log in - My Bookshelf</title>
+        <link href="../styles/logreg.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <main class="main">
+            <h1 class="main__title">Log in</h1>
+            <form class="main__form">
+                <p class="main__form-warning --main-error">&nbsp</p>
+                <label for="log">Email:</label>
+                <input type="email" name="log" class="main__form-input --login" autofocus autocomplete="off"/>
+                <p class="main__form-warning --log-error">&nbsp</p>
+                <label for="pass">Password:</label>
+                <input type="password" name="pass" class="main__form-input --password" required/>
+                <p class="main__form-warning --pass-error">&nbsp</p>
+                <button class="main__form-button --log-button" type="submit">Submit</button>
+            </form>
+            <p class="main__hint">Don't have an account yet? <a href="./register.html">Register here!</a></p>
+            <a class="main__hint" href="./index.html">Return to main page</a>
+            <script src="../js/validation.js"></script>
+        </main>
+    </body>
+</html>

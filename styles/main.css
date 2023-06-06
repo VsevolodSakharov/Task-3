@@ -11,6 +11,102 @@ html {
   font-family: "Montserrat", sans-serif;
 }
 
+.edge {
+  padding: 0 30px;
+  height: 6.5vh;
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(0.5turn, rgb(67, 50, 29), rgb(82, 65, 44), rgb(67, 50, 29));
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  color: white;
+}
+@media (min-width: 1800px) {
+  .edge {
+    font-size: 1vw;
+    padding: 0 1.5vw;
+  }
+}
+.edge.--header {
+  justify-content: right;
+  box-shadow: 0 20px 2rem rgba(0, 0, 0, 0.3);
+}
+.edge.--header .nav {
+  display: flex;
+}
+.edge.--header .nav > * {
+  padding: 0 5px;
+}
+@media (min-width: 1800px) {
+  .edge.--header .nav > * {
+    padding: 0 0.5vw;
+  }
+}
+@media (max-width: 600px) {
+  .edge.--header .nav > * {
+    padding: 0 2px;
+  }
+}
+.edge.--header .nav__username {
+  display: flex;
+  align-self: center;
+}
+.edge.--header .nav__wide .nav__wide-link {
+  color: white;
+  text-decoration: none;
+}
+.edge.--header .nav__wide .nav__wide-link:visited {
+  color: white;
+}
+.edge.--header .nav__wide .nav__wide-link:hover {
+  text-decoration: underline;
+}
+.edge.--header .nav__wide .nav__wide-link:active {
+  color: gold;
+}
+.edge.--header .nav__wide .nav__wide-link.--current {
+  text-decoration: none;
+  color: gold;
+  pointer-events: none;
+  box-shadow: 0 2px gold;
+}
+@media (max-width: 600px) {
+  .edge.--header .nav__wide {
+    display: none;
+  }
+}
+.edge.--header .nav__small {
+  display: none;
+}
+@media (max-width: 600px) {
+  .edge.--header .nav__small {
+    display: block;
+  }
+  .edge.--header .nav__small-select {
+    width: fit-content;
+    text-align: right;
+    color: gold;
+    font-size: 18px;
+    text-decoration: underline;
+    background: none;
+    outline: none;
+    border: none;
+  }
+  .edge.--header .nav__small-select .nav__small-link {
+    background: black;
+    color: white;
+    font-size: 14px;
+  }
+  .edge.--header .nav__small-select .nav__small-link[disabled] {
+    color: gray;
+  }
+}
+.edge.--footer {
+  justify-content: left;
+  box-shadow: 0 -10px 2rem rgba(0, 0, 0, 0.3);
+}
+
 .main {
   padding: 40px 30px;
   display: flex;
@@ -18,14 +114,35 @@ html {
   align-items: center;
   justify-content: center;
   gap: 10vh;
-  min-height: 100vh;
+  min-height: 87vh;
   height: 100%;
-  background-color: cornsilk;
+  background: cornsilk radial-gradient(rgb(253, 253, 245), cornsilk);
 }
-.main__header {
+@media (min-width: 1800px) {
+  .main {
+    padding: 2vw 1.5vw;
+  }
+}
+.main__title {
   font-family: "Times New Roman", Times, serif;
   font-size: 8vw;
   color: rgb(82, 65, 44);
+  text-align: center;
+}
+@media (max-width: 1250px) {
+  .main__title {
+    font-size: 6rem;
+  }
+}
+@media (max-width: 900px) {
+  .main__title {
+    font-size: 4.5rem;
+  }
+}
+@media (max-width: 600px) {
+  .main__title {
+    font-size: 3rem;
+  }
 }
 .main__search {
   min-width: 45vw;
@@ -34,23 +151,90 @@ html {
   display: flex;
   flex-flow: row nowrap;
 }
+.main__search > * {
+  padding: 0 15px;
+  font-size: 18px;
+}
+@media (max-width: 600px) {
+  .main__search > * {
+    font-size: 14px;
+  }
+}
+@media (max-width: 900px) {
+  .main__search > * {
+    padding: 0 5px;
+  }
+}
+@media (min-width: 1800px) {
+  .main__search > * {
+    font-size: 0.95vw;
+  }
+}
 .main__search-select {
   width: 23%;
 }
+@media (max-width: 600px) {
+  .main__search-select option {
+    background: black;
+    color: white;
+  }
+  .main__search-select option[disabled] {
+    color: gray;
+  }
+}
 .main__search-input {
   width: 62%;
-  font-size: 1vw;
 }
 .main__search-button {
   width: 15%;
+  border-radius: 0 20px 20px 0;
+  color: white;
+  font-weight: bold;
+  background-color: red;
+  border: 3px solid rgb(99, 10, 10);
+}
+.main__search-button:active {
+  color: red;
+  background-color: pink;
+  border: 3px solid red;
+  box-shadow: none;
+}
+.main__search-button .text.--small {
+  display: none;
+}
+@media (max-width: 1250px) {
+  .main__search-button .text {
+    display: none;
+  }
+  .main__search-button .text.--small {
+    display: contents;
+  }
 }
 .main__article {
   margin: 0 auto;
+  height: auto;
+}
+.main__article.--search-success {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: minmax(100px, auto);
   row-gap: 5rem;
   column-gap: 5rem;
+}
+@media (max-width: 1799px) {
+  .main__article.--search-success {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 1250px) {
+  .main__article.--search-success {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 900px) {
+  .main__article.--search-success {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .card {
@@ -59,10 +243,22 @@ html {
   align-items: center;
   justify-content: center;
   position: relative;
-  height: 18rem;
-  width: 13rem;
+  height: 450px;
+  width: 300px;
   -moz-perspective: 200rem;
   perspective: 200rem;
+}
+@media (max-width: 900px) {
+  .card {
+    height: 375px;
+    width: 250px;
+  }
+}
+@media (max-width: 600px) {
+  .card {
+    height: 300px;
+    width: 200px;
+  }
 }
 .card__side {
   height: 100%;
@@ -78,7 +274,7 @@ html {
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
 }
 .card__side.--front {
-  object-fit: cover;
+  object-fit: fill;
 }
 .card__side.--back {
   display: flex;
@@ -106,9 +302,9 @@ html {
   border-bottom: 1px solid white;
 }
 .card__side.--back .form {
+  margin: 0 auto;
   position: sticky;
   bottom: 0;
-  margin: 0 auto;
   padding-top: 10px;
 }
 .card__side.--back .form__button {
@@ -118,14 +314,20 @@ html {
   font-weight: bold;
   background-color: red;
   border: 3px solid rgb(99, 10, 10);
-  box-shadow: 0 0.4rem rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0.4rem 2px rgba(0, 0, 0, 0.5);
   border-radius: 25px;
+}
+@media (max-width: 600px) {
+  .card__side.--back .form__button {
+    width: 150px;
+    height: 50px;
+  }
 }
 .card__side.--back .form__button:active {
   color: red;
   background-color: pink;
   border: 3px solid red;
-  box-shadow: 0 0.3rem rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0.3rem 2px rgba(0, 0, 0, 0.5);
 }
 .card__side.--back .form__button.--disabled {
   background-color: gray;
@@ -137,4 +339,22 @@ html {
 }
 .card:hover .card__side.--front {
   transform: rotateY(-180deg);
+}
+
+.no-results {
+  height: auto;
+  width: auto;
+  visibility: hidden;
+  text-align: center;
+  font-size: 1.15vw;
+}
+@media (max-width: 1799px) {
+  .no-results {
+    font-size: 20px;
+  }
+}
+@media (max-width: 600px) {
+  .no-results {
+    font-size: 18px;
+  }
 }

@@ -1,0 +1,126 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 18px;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: gray;
+}
+
+.main {
+  min-height: 60vh;
+  box-sizing: content-box;
+  width: 350px;
+  height: auto;
+  background-color: cornsilk;
+  border: 5px solid rgb(155, 148, 120);
+  padding: 30px 40px;
+  margin: auto;
+  display: flex;
+  flex-flow: column nowrap;
+  overflow: hidden;
+  justify-content: space-evenly;
+  text-align: center;
+}
+@media (min-width: 1800px) {
+  .main {
+    width: 25vw;
+    font-size: 1vw;
+    padding: 2vw;
+  }
+}
+.main > * {
+  margin: 10px 0;
+}
+@media (min-width: 1800px) {
+  .main > * {
+    margin: 0.2vw 0;
+  }
+}
+.main__title {
+  font-family: "Times New Roman", Times, serif;
+  color: rgb(82, 65, 44);
+}
+.main__form {
+  display: flex;
+  text-align: left;
+  flex-flow: column nowrap;
+  gap: 15px;
+}
+.main__form-input {
+  height: 30px;
+  font-size: inherit;
+  padding: 0 10px;
+}
+@media (min-width: 1800px) {
+  .main__form-input {
+    height: 1.7vw;
+    padding: 0 0.5vw;
+  }
+}
+.main__form-input::placeholder {
+  color: red;
+}
+.main__form-warning {
+  visibility: hidden;
+  color: red;
+  font-size: 16px;
+}
+@media (min-width: 1800px) {
+  .main__form-warning {
+    font-size: 0.9vw;
+  }
+}
+.main__form-warning.--main-error {
+  align-self: center;
+  text-align: center;
+}
+.main__form-button {
+  align-self: center;
+  text-align: center;
+  height: 40px;
+  width: 100%;
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+  background-color: red;
+  border: 3px solid rgb(99, 10, 10);
+}
+.main__form-button:active {
+  color: red;
+  background-color: pink;
+  border: 3px solid red;
+}
+@media (min-width: 1800px) {
+  .main__form-button {
+    font-size: 0.9vw;
+    height: 1.7vw;
+    margin: 1vw 0;
+  }
+}
+.main__hint {
+  font-size: 16px;
+}
+@media (min-width: 1800px) {
+  .main__hint {
+    font-size: 0.9vw;
+  }
+}
+.main a {
+  color: goldenrod;
+}
+.main a:active {
+  color: black;
+}

@@ -1,23 +1,30 @@
 @mixin respond($breakpoint) {
     @if $breakpoint == phone {
-     @media (max-width: 37.5em) {
-      @content;
-     } // < 600px
+        @media (max-width: 600px) {
+            @content;
+        } 
     }
     @if $breakpoint == tab-port {
-     @media (max-width: 56.25em) {
-      @content;
-     } // < 900px
+        @media (max-width: 900px) {
+            @content;
+        }
     }
     @if $breakpoint == tab-land {
-     @media (max-width: 75em) {
-      @content;
-     } // < 1200px
+        @media (max-width: 1250px) {
+            @content;
+        }  
     }
+
+    @if $breakpoint == desktop{
+        @media (max-width: 1799px) {
+            @content;
+        } 
+    }
+
     @if $breakpoint == big-desktop {
-     @media (min-width: 112.5em) {
-      @content;
-     } // > 1800px
+        @media (min-width: 1800px) {
+            @content;
+        } 
     }
 }
 
@@ -34,6 +41,97 @@ html{
     font-family: 'Montserrat', sans-serif;
 }
 
+.edge{
+    padding: 0 30px;
+    height: 6.5vh;
+    position: relative;
+    z-index:1;
+    background: linear-gradient(0.5turn, rgb(67, 50, 29), rgb(82, 65, 44), rgb(67, 50, 29)) ;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    color: white;
+    @include respond(big-desktop){
+        font-size: 1vw;
+        padding: 0 1.5vw;
+    }
+    &.--header{
+        justify-content: right;
+        box-shadow: 0 20px 2rem rgba(black, 0.3);
+        & .nav{
+            display: flex;
+            &>*{
+                padding: 0 5px;
+                @include respond(big-desktop){
+                    padding: 0 0.5vw;
+                }
+                @include respond(phone){
+                    padding: 0 2px;
+                }
+            }
+            &__username{
+                display: flex;
+                align-self: center;
+            }
+            &__wide{
+                & .nav__wide-link{
+                    color: white;
+                    text-decoration: none;
+                    &:visited{
+                        color: white;
+                    }
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                    &:active{
+                        color: gold;
+                    }
+                    &.--current{
+                        text-decoration: none;
+                        color: gold;
+                        pointer-events: none;
+                        box-shadow: 0 2px gold;
+                    }
+                }
+                @include respond(phone){
+                    display: none;
+                }
+            }
+            &__small{
+                display: none;
+                @include respond(phone){
+                    display: block;
+                    &-select{
+                        width: fit-content;
+                        text-align: right;
+                        color: gold;
+                        font-size: 18px;
+                        text-decoration: underline;
+                        background: none;
+                        outline: none;
+                        border: none;
+                        & .nav__small-link{
+                            background: black;
+                            color: white;
+                            font-size: 14px;
+                            &[disabled]{
+                                color: gray;
+                            }
+                        }
+                    }
+                }
+
+            }
+            
+        }
+    }
+    &.--footer{
+        justify-content: left;
+        box-shadow: 0 -10px 2rem rgba(black, 0.3);
+    }
+
+}
+
 .main{
     padding: 40px 30px;
     display: flex;
@@ -41,13 +139,26 @@ html{
     align-items: center;
     justify-content: center;
     gap: 10vh;
-    min-height: 100vh;
+    min-height: 87vh;
     height: 100%;
-    background-color: cornsilk;
-    &__header{
+    background: cornsilk radial-gradient(rgb(253, 253, 245), cornsilk);
+    @include respond(big-desktop){
+        padding: 2vw 1.5vw;
+    }
+    &__title{
         font-family: 'Times New Roman', Times, serif;
         font-size: 8vw;
         color: rgb(82, 65, 44);
+        text-align: center;
+        @include respond(tab-land){
+            font-size: 6rem;
+        }
+        @include respond(tab-port){
+            font-size: 4.5rem;
+        }
+        @include respond(phone){
+            font-size: 3rem;
+        }
     }
     &__search{
         min-width: 45vw;
@@ -55,24 +166,79 @@ html{
         height: 3.5vh;
         display: flex;
         flex-flow: row nowrap;
+        &>*{
+            padding: 0 15px;
+            font-size: 18px;
+            @include respond(phone){
+                font-size: 14px;
+            }
+            @include respond(tab-port){
+                padding: 0 5px;
+            }
+            @include respond(big-desktop){
+                font-size: 0.95vw;
+            }
+        }
         &-select{
             width:23%;
+            & option{
+                @include respond(phone){
+                    background: black;
+                    color: white;
+                    &[disabled]{
+                        color: gray;
+                    }
+                }
+            }
         }
         &-input{
             width:62%;
-            font-size: 1vw;
         }
         &-button{
             width:15%;
+            border-radius: 0 20px 20px 0;
+            color: white;
+            font-weight: bold;
+            background-color: red;
+            border: 3px solid rgb(99, 10, 10);
+            &:active{
+                color: red;
+                background-color: pink;
+                border: 3px solid red;
+                box-shadow: none;
+            }
+            & .text{
+                &.--small{
+                    display: none;
+                }
+                @include respond(tab-land){
+                    display: none;
+                    &.--small{
+                        display: contents;
+                    }
+                }
+            }
         }
     }
     &__article{
         margin: 0 auto;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-auto-rows: minmax(100px, auto);
-        row-gap: 5rem;
-        column-gap: 5rem;
+        height: auto;
+        &.--search-success{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            @include respond(desktop){
+                grid-template-columns: repeat(3, 1fr);
+            }
+            @include respond(tab-land){
+                grid-template-columns: repeat(2, 1fr);
+            }
+            @include respond(tab-port){
+                grid-template-columns: repeat(1, 1fr);
+            }
+            grid-auto-rows: minmax(100px, auto);
+            row-gap: 5rem;
+            column-gap: 5rem;
+        }
     }
 }
 
@@ -82,8 +248,16 @@ html{
     align-items: center;
     justify-content: center;
     position: relative;
-    height: 18rem;
-    width: 13rem;
+    height: 450px;
+    width: 300px;
+    @include respond(tab-port){
+        height: 375px;
+        width: 250px;
+    }
+    @include respond(phone){
+        height: 300px;
+        width: 200px;
+    }
     -moz-perspective: 200rem;
     perspective: 200rem;
     &__side{
@@ -99,7 +273,7 @@ html{
         overflow: hidden; /* The image is overflowing the parent. */
         box-shadow: 0 1rem 3rem rgba(black, 0.3);
         &.--front{
-            object-fit: cover;
+            object-fit: fill;
         }
         &.--back {
             display: flex;
@@ -126,24 +300,28 @@ html{
                 }
             }
             .form{
+                margin: 0 auto;
                 position: sticky;
                 bottom: 0;
-                margin: 0 auto;
                 padding-top: 10px;
                 &__button{
                     width: 180px;
                     height: 50px;
+                    @include respond(phone){
+                        width: 150px;
+                        height: 50px;
+                    }
                     color: white;
                     font-weight: bold;
                     background-color: red;
                     border: 3px solid rgb(99, 10, 10);
-                    box-shadow: 0 0.4rem rgb(black, 0.5);
+                    box-shadow: 0 0.4rem 2px rgb(black, 0.5);
                     border-radius: 25px;
                     &:active{
                         color: red;
                         background-color: pink;
                         border: 3px solid red;
-                        box-shadow: 0 0.3rem rgb(black, 0.5);
+                        box-shadow: 0 0.3rem 2px rgb(black, 0.5);
                     }
                     &.--disabled{
                         background-color: gray;
@@ -159,5 +337,19 @@ html{
     }
     &:hover &__side.--front {
         transform: rotateY(-180deg);
+    }
+}
+
+.no-results{
+    height: auto;
+    width: auto;
+    visibility: hidden;
+    text-align: center;
+    font-size: 1.15vw;
+    @include respond(desktop){
+        font-size: 20px;
+    }
+    @include respond(phone){
+        font-size: 18px;
     }
 }
