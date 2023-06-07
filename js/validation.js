@@ -122,7 +122,7 @@ function log(e){
       localStorage.users = JSON.stringify(usersCollection);
       window.location.href = "index.html";
     } else{
-      mainWarning.innerHTML = "Wrong email or password. Please, try again.";
+      mainWarning.innerHTML = "Wrong email or password. Please, try again";
       mainWarning.style.visibility = "visible";
       login.style.borderColor = "red";
       password.style.borderColor = "red";
