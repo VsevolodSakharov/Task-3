@@ -22,7 +22,7 @@ async function searchBook(e) {
   catch{err => console.log(err)};
 
   if (result.totalItems>0){
-    noResult.remove();
+    noResult.style.display = "none";
     insert.classList.add("--search-success");
     for(let i=0; i<books.length; i++){
       const book = {
@@ -52,6 +52,7 @@ async function searchBook(e) {
     }
   } else{
     insert.classList.remove("--search-success");
+    noResult.style.display = "flex";
     noResult.style.visibility="visible";
   };
   
@@ -59,7 +60,7 @@ async function searchBook(e) {
 
 function clearFields(e){
   e.preventDefault();
-  const cards = document.querySelectorAll(".--search-success");
+  const cards = document.querySelectorAll(".card");
   for (let i = 0; i < cards.length; i++) {
     cards[i].remove();
   }
