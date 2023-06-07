@@ -8,11 +8,10 @@ const insert = document.querySelector(".main__article");
 const noResult = document.querySelector(".no-results");
 let result;
 let books = [];
-let bookShelf = {};
 import {activeUser} from "./logcheck.js";
 const usersCollection = localStorage.users ? JSON.parse(localStorage.users) : {};
-let userShelf = usersCollection[activeUser];
-
+const user = usersCollection[activeUser];
+const booksCollection = user?.allBooks || {};
 
 async function searchBook(e) {
   e.preventDefault();
@@ -33,7 +32,7 @@ async function searchBook(e) {
       };
       insert.insertAdjacentHTML("beforeend",
       `<section class="card">
-      <img src="${book.imageLinks.thumbnail}" class="card__side --front" alt="${book.title}">
+      <img src="${book.imageLinks?.thumbnail}" class="card__side --front" alt="${book.title}">
       <div class="card__side --back">
       <ul>
       <li class="title">"${book.title}"</li>
@@ -45,12 +44,12 @@ async function searchBook(e) {
       <li>${book.description||"No available description."}</li>
       </ul>
       <form class="form">
-      <button class="${activeUser ? "form__button" : "form__button --disabled"}" id="${book.id}">Add to bookshelf ♡</button>
+      <button id="${book.id}" class="${activeUser ? "form__button" : "form__button --disabled"}">Add to bookshelf ♡</button>
       </form>
       </div>
       </section>`);
       const addBtn = document.getElementById(book.id);
-      addBtn.addEventListener("click", (e) => {e.preventDefault(); addBook(book.id, book)});
+      addBtn.addEventListener("click", (e) => {e.preventDefault(); addBook(book)});
     }
   } else{
     insert.classList.remove("--search-success");
@@ -73,14 +72,13 @@ function search(e){
   searchBook(e);
 }
 
-function addBook(key, value){
-  if((userShelf.allBooks) && (key in userShelf.allBooks)){
+function addBook(book){
+  if((booksCollection) && (book.id in booksCollection)){
     alert("Already on your bookshelf");
   } else{
-    bookShelf[key] = value;
-    userShelf["allBooks"] = bookShelf;
+    booksCollection[book.id] = book;
+    user.allBooks = booksCollection;
     localStorage.users = JSON.stringify(usersCollection);
-    alert("The book was successfully added");
   }
 }
 

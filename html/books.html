@@ -7,6 +7,43 @@
         <link href="../styles/main.css" rel="stylesheet"/>
     </head>
     <body>
-        <a href="./index.html">To main</a>
+        <header class="edge --header">
+            <nav class="nav">
+                <p class="nav__username --loged-in"></p>
+                <div class="nav__wide">
+                    <a class="nav__wide-link" href="./about.html">About</a>
+                    <b>|</b>
+                    <a class="nav__wide-link" href="./index.html">Main</a>
+                    <b>|</b>
+                    <a class="nav__wide-link --loged-out" href="./login.html">Log in</a>
+                    <b class="--loged-out">|</b>
+                    <a class="nav__wide-link --loged-out" href="./register.html">Register</a>
+                    <a class="nav__wide-link --loged-in  --current" href="./books.html">My Books</a>
+                    <b class="--loged-in">|</b>
+                    <a class="nav__wide-link --loged-in --exit" href="./index.html">Log out</a>
+                </div>
+                <div class="nav__small">
+                    <select class="nav__small-select">
+                        <option class="nav__small-link" value="index.html">Main</option>
+                        <option class="nav__small-link" value="about.html">About</option>
+                        <option class="nav__small-link --loged-out" value="login.html">Log in</option>
+                        <option class="nav__small-link --loged-out" value="register.html">Register</option>
+                        <option selected disabled class="nav__small-link --loged-in" value="">My Books</option>
+                        <option class="nav__small-link --loged-in" value="exit">Log out</option>
+                    </select>
+                </div> 
+                <script src="../js/nav.js" type = "module"></script>
+                <script src="../js/logcheck.js" type = "module"></script>
+            </nav>
+        </header>
+        <main class="main">
+            <article class="main__article">
+                <p class="no-results">Your bookshelf is empty.</p>
+            </article>
+            <script src="../js/mybooks.js" type="module"></script>
+        </main>
+        <footer class="edge --footer">
+            <p>MyBookshelf© 2023</p>
+        </footer>
     </body>
 </html>

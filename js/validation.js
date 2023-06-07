@@ -83,7 +83,6 @@ function registration(e) {
   } else{
     usersCollection[userData.email] = userData;
     localStorage.users = JSON.stringify(usersCollection);
-    alert("New account was successfully created.");
     window.location.href = "index.html";
   }
 }
