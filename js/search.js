@@ -10,6 +10,8 @@ let result;
 let books = [];
 let bookShelf = {};
 import {activeUser} from "./logcheck.js";
+const usersCollection = localStorage.users ? JSON.parse(localStorage.users) : {};
+let userShelf = usersCollection[activeUser];
 
 
 async function searchBook(e) {
@@ -72,10 +74,13 @@ function search(e){
 }
 
 function addBook(key, value){
-  if(key in bookShelf){
-    alert("Already on your bookshelf!");
+  if((userShelf.allBooks) && (key in userShelf.allBooks)){
+    alert("Already on your bookshelf");
   } else{
-    bookShelf[key]= value;
+    bookShelf[key] = value;
+    userShelf["allBooks"] = bookShelf;
+    localStorage.users = JSON.stringify(usersCollection);
+    alert("The book was successfully added");
   }
 }
 
