@@ -56,8 +56,11 @@ html{
         padding: 0 1.5vw;
     }
     &.--header{
-        justify-content: right;
+        justify-content: space-between;
         box-shadow: 0 20px 2rem rgba(black, 0.3);
+        &.username{
+            visibility: hidden;
+        }
         & .nav{
             display: flex;
             &>*{
@@ -68,10 +71,6 @@ html{
                 @include respond(phone){
                     padding: 0 2px;
                 }
-            }
-            &__username{
-                display: flex;
-                align-self: center;
             }
             &__wide{
                 & .nav__wide-link{
@@ -159,6 +158,26 @@ html{
         @include respond(phone){
             font-size: 3rem;
         }
+        &.--about{
+            @include respond(big-desktop){
+                font-size: 5vw;
+            }
+        }
+    }
+    &__description{
+        width: 55vw;
+        text-align: center;
+        font-size: 1.2vw;
+        line-height: 2;
+        @include respond(desktop){
+            font-size: 22px;
+        }
+        @include respond(tab-land){
+            font-size: 18px;
+        }
+        @include respond(phone){
+            font-size: 16px;
+        }
     }
     &__search{
         min-width: 45vw;
@@ -201,11 +220,17 @@ html{
             font-weight: bold;
             background-color: red;
             border: 3px solid rgb(99, 10, 10);
+            @include respond(big-desktop){
+                border-radius: 0 1vw 1vw 0;
+                border: 0.2vw solid rgb(99, 10, 10);
+            }
             &:active{
                 color: red;
                 background-color: pink;
                 border: 3px solid red;
-                box-shadow: none;
+                @include respond(big-desktop){
+                    border: 0.2vw solid red;
+                }
             }
             & .text{
                 &.--small{
@@ -226,6 +251,10 @@ html{
         &.--search-success{
             display: grid;
             grid-template-columns: repeat(4, 1fr);
+            @include respond(big-desktop){
+                row-gap: 4.5vw;
+                column-gap: 4.5vw;
+            }
             @include respond(desktop){
                 grid-template-columns: repeat(3, 1fr);
             }
@@ -236,8 +265,8 @@ html{
                 grid-template-columns: repeat(1, 1fr);
             }
             grid-auto-rows: minmax(100px, auto);
-            row-gap: 5rem;
-            column-gap: 5rem;
+            row-gap: 90px;
+            column-gap: 90px;
         }
         
     }
@@ -251,6 +280,10 @@ html{
     position: relative;
     height: 450px;
     width: 300px;
+    @include respond(big-desktop){
+        height: 22.5vw;
+        width: 15vw;
+    }
     @include respond(tab-port){
         height: 375px;
         width: 250px;
@@ -284,19 +317,34 @@ html{
             color: white;
             padding: 20px;
             overflow-y:auto;
+            @include respond(big-desktop){
+                padding: 1vw;
+            }
             ul{
                 height: auto;
                 list-style: none;
                 text-align: center;
                 font-size: 16px;
+                @include respond(big-desktop){
+                    font-size: 0.8vw;
+                }
                 .title{
                     font-size: 18px;
                     font-weight: bold;
+                    @include respond(big-desktop){
+                        font-size: 0.9vw;
+                    }
                 }
                 li{
                     padding: 10px 0;
+                    @include respond(big-desktop){
+                        padding: 0.5vw 0;
+                    }
                     &:not(:last-child){
                         border-bottom: 1px solid white;
+                        @include respond(big-desktop){
+                            border-bottom: 0.05vw solid white;
+                        }
                     }
                 }
             }
@@ -305,6 +353,9 @@ html{
                 position: sticky;
                 bottom: 0;
                 padding-top: 10px;
+                @include respond(big-desktop){
+                    padding-top: 0.5vw;
+                }
                 &__button{
                     width: 180px;
                     height: 50px;
@@ -316,18 +367,33 @@ html{
                     font-weight: bold;
                     background-color: red;
                     border: 3px solid rgb(99, 10, 10);
-                    box-shadow: 0 0.4rem 2px rgb(black, 0.5);
+                    box-shadow: 0 6px 2px rgb(black, 0.5);
                     border-radius: 25px;
+                    @include respond(big-desktop){
+                        font-size: 0.7vw;
+                        width: 9vw;
+                        height: 2.5vw;
+                        border: 0.15vw solid rgb(99, 10, 10);
+                        box-shadow: 0 0.3vw 0.1vw rgb(black, 0.5);
+                        border-radius: 1.25vw;
+                    }
                     &:active{
                         color: red;
                         background-color: pink;
                         border: 3px solid red;
-                        box-shadow: 0 0.3rem 2px rgb(black, 0.5);
+                        box-shadow: 0 5px 2px rgb(black, 0.5);
+                        @include respond(big-desktop){
+                            border: 0.15vw solid red;
+                            box-shadow: 0 0.25vw 0.1vw rgb(black, 0.5);
+                        }
                     }
                     &.--disabled{
                         background-color: gray;
                         border: 3px solid rgb(99, 99, 99);
                         pointer-events: none;
+                        @include respond(big-desktop){
+                            border: 0.15vw solid rgb(99, 99, 99);
+                        }
                     }
                 }
             }

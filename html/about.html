@@ -7,6 +7,44 @@
         <link href="../styles/main.css" rel="stylesheet"/>
     </head>
     <body>
-        <a href="./index.html">To main</a>
+        <header class="edge --header">
+            <p class="username">&nbsp</p>
+            <nav class="nav">
+                <div class="nav__wide">
+                    <a class="nav__wide-link --current" href="">About</a>
+                    <b>|</b>
+                    <a class="nav__wide-link" href="./index.html">Main</a>
+                    <b>|</b>
+                    <a class="nav__wide-link --loged-out" href="./login.html">Log in</a>
+                    <b class="--loged-out">|</b>
+                    <a class="nav__wide-link --loged-out" href="./register.html">Register</a>
+                    <a class="nav__wide-link --loged-in" href="./books.html">My Books</a>
+                    <b class="--loged-in">|</b>
+                    <a class="nav__wide-link --loged-in --exit" href="./index.html">Log out</a>
+                </div>
+                <div class="nav__small">
+                    <select class="nav__small-select">
+                        <option class="nav__small-link" value="index.html">Main</option>
+                        <option selected disabled class="nav__small-link" value="">About</option>
+                        <option class="nav__small-link --loged-out" value="login.html">Log in</option>
+                        <option class="nav__small-link --loged-out" value="register.html">Register</option>
+                        <option class="nav__small-link --loged-in" value="./books.html">My Books</option>
+                        <option class="nav__small-link --loged-in" value="exit">Log out</option>
+                    </select>
+                </div> 
+                <script src="../js/nav.js" type = "module"></script>
+                <script src="../js/logcheck.js" type = "module"></script>
+            </nav>
+        </header>
+        <main class="main">
+            <h1 class="main__title --about">About our app</h1>
+            <p class="main__description">"My Bookshelf" is a simple web-application which allows you to browse books, find out more about them and add those that you're interested in into your own virtual bookshelf.
+                If you want to get started, simply go over to the search panel through navigation menu located at the top-right side of the page.
+                There you will be able to find any book you'd like by selecting specific search options and entering your prompt.
+            </p>
+        </main>
+        <footer class="edge --footer">
+            <p>MyBookshelf© 2023</p>
+        </footer>
     </body>
 </html>

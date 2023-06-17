@@ -29,8 +29,11 @@ html {
   }
 }
 .edge.--header {
-  justify-content: right;
+  justify-content: space-between;
   box-shadow: 0 20px 2rem rgba(0, 0, 0, 0.3);
+}
+.edge.--header.username {
+  visibility: hidden;
 }
 .edge.--header .nav {
   display: flex;
@@ -47,10 +50,6 @@ html {
   .edge.--header .nav > * {
     padding: 0 2px;
   }
-}
-.edge.--header .nav__username {
-  display: flex;
-  align-self: center;
 }
 .edge.--header .nav__wide .nav__wide-link {
   color: white;
@@ -144,6 +143,32 @@ html {
     font-size: 3rem;
   }
 }
+@media (min-width: 1800px) {
+  .main__title.--about {
+    font-size: 5vw;
+  }
+}
+.main__description {
+  width: 55vw;
+  text-align: center;
+  font-size: 1.2vw;
+  line-height: 2;
+}
+@media (max-width: 1799px) {
+  .main__description {
+    font-size: 22px;
+  }
+}
+@media (max-width: 1250px) {
+  .main__description {
+    font-size: 18px;
+  }
+}
+@media (max-width: 600px) {
+  .main__description {
+    font-size: 16px;
+  }
+}
 .main__search {
   min-width: 45vw;
   width: auto;
@@ -193,11 +218,21 @@ html {
   background-color: red;
   border: 3px solid rgb(99, 10, 10);
 }
+@media (min-width: 1800px) {
+  .main__search-button {
+    border-radius: 0 1vw 1vw 0;
+    border: 0.2vw solid rgb(99, 10, 10);
+  }
+}
 .main__search-button:active {
   color: red;
   background-color: pink;
   border: 3px solid red;
-  box-shadow: none;
+}
+@media (min-width: 1800px) {
+  .main__search-button:active {
+    border: 0.2vw solid red;
+  }
 }
 .main__search-button .text.--small {
   display: none;
@@ -218,8 +253,14 @@ html {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: minmax(100px, auto);
-  row-gap: 5rem;
-  column-gap: 5rem;
+  row-gap: 90px;
+  column-gap: 90px;
+}
+@media (min-width: 1800px) {
+  .main__article.--search-success {
+    row-gap: 4.5vw;
+    column-gap: 4.5vw;
+  }
 }
 @media (max-width: 1799px) {
   .main__article.--search-success {
@@ -247,6 +288,12 @@ html {
   width: 300px;
   -moz-perspective: 200rem;
   perspective: 200rem;
+}
+@media (min-width: 1800px) {
+  .card {
+    height: 22.5vw;
+    width: 15vw;
+  }
 }
 @media (max-width: 900px) {
   .card {
@@ -285,27 +332,57 @@ html {
   padding: 20px;
   overflow-y: auto;
 }
+@media (min-width: 1800px) {
+  .card__side.--back {
+    padding: 1vw;
+  }
+}
 .card__side.--back ul {
   height: auto;
   list-style: none;
   text-align: center;
   font-size: 16px;
 }
+@media (min-width: 1800px) {
+  .card__side.--back ul {
+    font-size: 0.8vw;
+  }
+}
 .card__side.--back ul .title {
   font-size: 18px;
   font-weight: bold;
 }
+@media (min-width: 1800px) {
+  .card__side.--back ul .title {
+    font-size: 0.9vw;
+  }
+}
 .card__side.--back ul li {
   padding: 10px 0;
 }
+@media (min-width: 1800px) {
+  .card__side.--back ul li {
+    padding: 0.5vw 0;
+  }
+}
 .card__side.--back ul li:not(:last-child) {
   border-bottom: 1px solid white;
+}
+@media (min-width: 1800px) {
+  .card__side.--back ul li:not(:last-child) {
+    border-bottom: 0.05vw solid white;
+  }
 }
 .card__side.--back .form {
   margin: 0 auto;
   position: sticky;
   bottom: 0;
   padding-top: 10px;
+}
+@media (min-width: 1800px) {
+  .card__side.--back .form {
+    padding-top: 0.5vw;
+  }
 }
 .card__side.--back .form__button {
   width: 180px;
@@ -314,7 +391,7 @@ html {
   font-weight: bold;
   background-color: red;
   border: 3px solid rgb(99, 10, 10);
-  box-shadow: 0 0.4rem 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 6px 2px rgba(0, 0, 0, 0.5);
   border-radius: 25px;
 }
 @media (max-width: 600px) {
@@ -323,16 +400,37 @@ html {
     height: 50px;
   }
 }
+@media (min-width: 1800px) {
+  .card__side.--back .form__button {
+    font-size: 0.7vw;
+    width: 9vw;
+    height: 2.5vw;
+    border: 0.15vw solid rgb(99, 10, 10);
+    box-shadow: 0 0.3vw 0.1vw rgba(0, 0, 0, 0.5);
+    border-radius: 1.25vw;
+  }
+}
 .card__side.--back .form__button:active {
   color: red;
   background-color: pink;
   border: 3px solid red;
-  box-shadow: 0 0.3rem 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 5px 2px rgba(0, 0, 0, 0.5);
+}
+@media (min-width: 1800px) {
+  .card__side.--back .form__button:active {
+    border: 0.15vw solid red;
+    box-shadow: 0 0.25vw 0.1vw rgba(0, 0, 0, 0.5);
+  }
 }
 .card__side.--back .form__button.--disabled {
   background-color: gray;
   border: 3px solid rgb(99, 99, 99);
   pointer-events: none;
+}
+@media (min-width: 1800px) {
+  .card__side.--back .form__button.--disabled {
+    border: 0.15vw solid rgb(99, 99, 99);
+  }
 }
 .card:hover .card__side.--back {
   transform: rotateY(0);

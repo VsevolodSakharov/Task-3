@@ -1,7 +1,7 @@
 const logedIn = document.querySelectorAll(".--loged-in");
 const logedOut = document.querySelectorAll(".--loged-out");
 const exitWide= document.querySelector(".--exit");
-const userName = document.querySelector(".nav__username");
+const userName = document.querySelector(".username");
 const exitSmall = document.querySelector(".nav__small-select");
 let key;
 let activeUser = false;
@@ -19,8 +19,9 @@ if (Object.keys(usersCollection).length > 0){
         if (usersCollection[key]["logStatus"] === true){
             logedOut.forEach( element => {
                 element.style.display = "none";
-            });
-            userName.innerHTML = key;          
+            });  
+            userName.innerHTML = key;
+            userName.style.visibility = "visible";        
             activeUser = key;
             break;
         } else{
